@@ -2,7 +2,7 @@
 
 # Press Umschalt+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
+import matplotlib.pyplot
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -83,7 +83,7 @@ for index, row in zeit.iterrows():
         monday = False
 print(montage)
 
-#allData speichert die Daten jeder einzelnen Woche in Listen
+#allData speichert die Daten jeder einzelnen Woche und jeder einzelnen Zähler in Listen
 allData = []
 for m in montage:
     temp = df.iloc[(m-1):(m+671)]
@@ -93,3 +93,10 @@ for m in montage:
         liste.append(temp2)
     allData.append(liste)
 print(allData[1])
+#Plotte i Wochen für einen Zähler
+for i in range(4):
+    v = allData[i]
+    x = list(range(672))
+    y = np.array(v[1])
+    plt.plot(x,y)
+plt.show()
